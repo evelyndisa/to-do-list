@@ -98,6 +98,7 @@
     background-color: #ede0de;
     padding: 5px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 .button-trash{
     background: none;
@@ -139,4 +140,14 @@
     border: solid #000;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+.task-box{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    height: 25px;
+}
+
+.deleteTask{
+    display: none;
 }

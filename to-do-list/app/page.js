@@ -1,4 +1,6 @@
+'use client'
 import "./page.css";
+import { useState } from 'react';
 
 export default function Home() {
 
@@ -15,6 +17,20 @@ export default function Home() {
   const month = months[getmonth]
 
 
+  const [tasks, setTasks] = useState([]);  // donde se almacenan las tareas ingresadas por el usuario
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value); // se actualiza el estado 'inputValue' si el usuario escribe algo
+  };
+  const handleSubmit = (event) => {  // se activa cuando el usuario envia el form
+    event.preventDefault();
+    if (inputValue.trim() !== '') { // si esta vacio, no envia su valor a task
+      setTasks([...tasks, inputValue]);  // reemplazamos el array de task por uno nuevo que incluya todas las tareas anteriores mas la nueva
+      setInputValue('');
+    }
+  };
+
   return (
     <div className="container">
       <div className="date-selector">
@@ -24,19 +40,24 @@ export default function Home() {
         </div>
         <button className="button-mode-dark"><img src="../images/moon.png"></img></button>
       </div>
-      <form className="form">
-        <input type="text" id="input" name="input" className="input-add-task" placeholder="Add task.."></input>
-        <button className="button-create">Create</button>
+      <form className="form" onSubmit={handleSubmit}>
+        <input type="text" id="input" name="input" className="input-add-task" autocomplete="off" placeholder="Add task.." value={inputValue} onChange={handleChange} />
+        <button className="button-create" type="submit">Create</button>
       </form>
       <div>
         <div className="task-status">
           <p>To do</p>
           <p>Complete 0 of 1</p>
         </div>
-        <div className="task-container">
-          <input type="checkbox" id="checkbox" name="checkbox" className="checkbox"></input>
-          <button className="button-trash"><img src="../images/trash.png"></img></button>
-        </div>
+        {tasks.map((task) => (
+          <div className="task-container">
+            <div className="task-box">
+              <input type="checkbox" id="checkbox" name="checkbox" className="checkbox" />
+              <p>{task}</p>
+            </div>
+            <button className="button-trash"><img src="../images/trash.png"></img></button>
+          </div>
+        ))}
       </div>
     </div>
   );
