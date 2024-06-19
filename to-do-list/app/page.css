@@ -92,6 +92,10 @@
     display: flex;
     justify-content: space-between;
 }
+.span{
+    color: #987070;
+    font-weight: 500;
+}
 .task-container{
     display: flex;
     justify-content: space-between;
