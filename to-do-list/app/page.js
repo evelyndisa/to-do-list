@@ -26,7 +26,8 @@ export default function Home() {
   const handleSubmit = (event) => {  // se activa cuando el usuario envia el form
     event.preventDefault();
     if (inputValue.trim() !== '') { // si esta vacio, no envia su valor a task
-      setTasks([...tasks, { text: inputValue, checked: false }]);  // reemplazamos el array de task por uno nuevo que incluya todas las tareas anteriores mas la nueva en un nuevo objeto
+      const newTask = { text: inputValue, checked: false };
+      setTasks([...tasks, newTask]);  // reemplazamos el array de task por uno nuevo que incluya todas las tareas anteriores mas la nueva en un nuevo objeto
       setInputValue('');
     }
   };
@@ -37,14 +38,10 @@ export default function Home() {
     setTasks(updatedTasks); // actualiza el estado de las tareas
   };
   const toggleCheckbox = (index) => {
-    const updatedTasks = [...tasks]; // Copia el arreglo 'tasks'
-    updatedTasks[index].checked = !updatedTasks[index].checked; // Cambia el estado del checkbox de la tarea en el índice dado 
-    if (updatedTasks[index]) {
-      // Cambiar el estado del checkbox y isActive de la tarea en el índice dado
-      updatedTasks[index].checked = !updatedTasks[index].checked;
-      updatedTasks[index].isActive = !updatedTasks[index].isActive;setTasks(updatedTasks); // Actualiza el estado 'tasks' con las tareas actualizadas
+    const updatedTasks = [...tasks]; 
+    updatedTasks[index].checked = !updatedTasks[index].checked; // cambia el estado del checkbox
+    setTasks(updatedTasks); 
   };
-  }
 
 
   return (
