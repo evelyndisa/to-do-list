@@ -7,9 +7,136 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
+/* --------- date -------- */
+
 .date-selector{
-    background-color: #fff;
     display: flex;
     justify-content: space-between;
+}
+.date-selector p{
+    margin: 0;
+}
 
+.button-mode-dark{
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.button-mode-dark img{
+    padding: 6px;
+    width: 30px;
+    height: 30px;
+    border: 2.3px solid #987070;
+    border-radius: 50%;
+}
+.date{
+    display: flex;
+    flex-direction: column;
+}
+.day{
+    color: #987070;
+    font-size: 24px;
+}
+.month{
+    color: #C39898;
+}
+
+
+/* --------- date -------- */
+
+
+.form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-add-task{
+    background-color: #dbb5b554;
+    border: #C39898;
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding-left: 7px;
+    outline: none;
+}
+.input-add-task::placeholder{
+    font-size: 14px;
+}
+.input-add-task:hover, .input-add-task:focus{
+    outline: 1px solid #d5b4b434
+}
+
+.button-create{
+    background-color: #987070;
+    padding: 13px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 15px;
+    height: 40%;
+    cursor: pointer;
+}
+.button-create:hover{
+    background-color: #C39898;
+}
+
+
+/* --------- task container -------- */
+
+
+.task-status{
+    display: flex;
+    justify-content: space-between;
+}
+.task-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ede0de;
+    padding: 5px;
+    border-radius: 5px;
+}
+.button-trash{
+    background: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.button-trash img{
+    width: 20px;
+    height: 20px;
+}
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    border: 1px solid #987070;
+    border-radius: 50px; 
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.checkbox:hover {
+    background-color: #D5B4B4;
+}
+.checkbox:checked{
+    background-color: #D5B4B4;
+}
+.checkbox:checked::after{
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
