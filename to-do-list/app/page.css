@@ -17,14 +17,14 @@
     margin: 0;
 }
 
-.button-mode-dark{
+.button-moon{
     width: 40px;
     height: 40px;
     background: none;
     border: none;
     cursor: pointer;
 }
-.button-mode-dark img{
+.button-moon img{
     padding: 6px;
     width: 30px;
     height: 30px;
@@ -153,4 +153,36 @@
 }
 .line-through{
     text-decoration: line-through;
+}
+
+
+/* --------- DARK MODE -------- */
+
+.darkmode{
+    background-color: #3E3232;
+    color: #eee;
+}
+.task-container-darkmode{
+    background-color: #7E6363;
+}
+.input-add-task-darkmode{
+    color: #eee;
+    font-size: 18px;
+}
+.input-add-task-darkmode::placeholder{
+    color: #eeeeee81;
+}
+.checkbox-darkmode{
+    background: none;
+    border: 3px solid#503C3C;
+}
+.checkbox-darkmode:checked{
+    background-color: #D5B4B4;
+    border: 2px solid #503C3C;
+}
+.checkbox-darkmode:checked::after{
+    top: 3px;
+    left: 5px;
+    border: solid #503C3C;
+    border-width: 0 2px 2px 0;
 }

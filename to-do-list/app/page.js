@@ -38,32 +38,37 @@ export default function Home() {
     setTasks(updatedTasks); // actualiza el estado de las tareas
   };
   const toggleCheckbox = (index) => {
-    const updatedTasks = [...tasks]; 
+    const updatedTasks = [...tasks];
     updatedTasks[index].checked = !updatedTasks[index].checked; // cambia el estado del checkbox
-    setTasks(updatedTasks); 
+    setTasks(updatedTasks);
   };
+
+  const [isActive, setIsActive] = useState(false);
+  const HandleDarkMode = () => {
+    setIsActive(!isActive)
+  }
 
 
   return (
-    <div className="container">
+    <div className={`container ${isActive ? 'darkmode' : ''}`}>
       <div className="date-selector">
         <div className="date">
-          <p className="day">{`${day}, ${dayOfMonth}`}</p>
-          <p className="month">{month}</p>
+          <p className={`day ${isActive ? 'darkmode' : ''}`}>{`${day}, ${dayOfMonth}`}</p>
+          <p className={`month ${isActive ? 'darkmode' : ''}`}>{month}</p>
         </div>
-        <button className="button-mode-dark"><img src="../images/moon.png"></img></button>
+        <button className="button-moon" onClick={HandleDarkMode}><img src="../images/moon.png"></img></button>
       </div>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           id="input"
           name="input"
-          className="input-add-task"
+          className={`input-add-task ${isActive ? 'input-add-task-darkmode' : ''}`}
           autoComplete="off"
           placeholder="Add task.."
           value={inputValue}
-          onChange={handleChange} 
-          />
+          onChange={handleChange}
+        />
         <button className="button-create" type="submit">Create</button>
       </form>
       <div>
@@ -72,22 +77,24 @@ export default function Home() {
           <p>Complete <span className="span">{tasks.filter(task => task.checked).length}</span> of <span className="span">{tasks.length}</span> </p>
         </div>
         {tasks.map((task, index) => (
-          <div key={index} className="task-container">
+          <div key={index} className={`task-container ${isActive ? 'task-container-darkmode' : ''}`}>
             <div className="task-box">
               <input
                 type="checkbox"
                 id={`checkbox-${index}`}
                 name={`checkbox-${index}`}
-                className="checkbox" 
+                className={`checkbox ${isActive ? 'checkbox-darkmode' : ''}`}
                 checked={task.checked}
                 onChange={() => toggleCheckbox(index)}
-                />
+              />
               <p className={task.checked ? 'line-through' : ''}>{task.text}</p>
             </div>
-            <button className="button-trash" onClick={() => handleDeleteTask(index)}><img src="../images/trash.png" alt="trash icon"></img></button>
+            <button className="button-trash" onClick={() => handleDeleteTask(index)}>
+              {isActive ? <img src="../images/trash-dark.png" alt="trash icon"></img> : <img src="../images/trash.png" alt="trash icon"></img>}
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
