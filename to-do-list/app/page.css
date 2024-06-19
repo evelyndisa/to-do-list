@@ -151,7 +151,6 @@
     padding: 0;
     height: 25px;
 }
-
-.deleteTask{
-    display: none;
+.line-through{
+    text-decoration: line-through;
 }

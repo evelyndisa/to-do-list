@@ -38,9 +38,13 @@ export default function Home() {
   };
   const toggleCheckbox = (index) => {
     const updatedTasks = [...tasks]; // Copia el arreglo 'tasks'
-    updatedTasks[index].checked = !updatedTasks[index].checked; // Cambia el estado del checkbox de la tarea en el índice dado
-    setTasks(updatedTasks); // Actualiza el estado 'tasks' con las tareas actualizadas
+    updatedTasks[index].checked = !updatedTasks[index].checked; // Cambia el estado del checkbox de la tarea en el índice dado 
+    if (updatedTasks[index]) {
+      // Cambiar el estado del checkbox y isActive de la tarea en el índice dado
+      updatedTasks[index].checked = !updatedTasks[index].checked;
+      updatedTasks[index].isActive = !updatedTasks[index].isActive;setTasks(updatedTasks); // Actualiza el estado 'tasks' con las tareas actualizadas
   };
+  }
 
 
   return (
@@ -58,7 +62,7 @@ export default function Home() {
           id="input"
           name="input"
           className="input-add-task"
-          autocomplete="off"
+          autoComplete="off"
           placeholder="Add task.."
           value={inputValue}
           onChange={handleChange} 
@@ -81,7 +85,7 @@ export default function Home() {
                 checked={task.checked}
                 onChange={() => toggleCheckbox(index)}
                 />
-              <p>{task.text}</p>
+              <p className={task.checked ? 'line-through' : ''}>{task.text}</p>
             </div>
             <button className="button-trash" onClick={() => handleDeleteTask(index)}><img src="../images/trash.png" alt="trash icon"></img></button>
           </div>
