@@ -3,7 +3,7 @@
     width: 90%;
     max-width: 580px;
     margin: auto;
-    margin: 90px;
+    margin: 50px;
     padding: 30px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
@@ -186,4 +186,41 @@
     left: 5px;
     border: solid #503C3C;
     border-width: 0 2px 2px 0;
+}
+
+
+@media (max-width: 460px){
+    .container{
+        margin: 20px;
+    }
+    .button-moon img{
+        width: 20px;
+        height: 20px;
+        border: 1.5px solid #987070;
+    }
+    .day{
+        font-size: 20px;
+    }
+    .form{
+        flex-direction: column;
+    }
+    .input-add-task{
+        width: 100%;
+        margin: 15px;
+    }
+    .button-create{
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .task-status, .task-box p{
+        font-size: 14px;
+    }
+    .checkbox{
+        width: 15px;
+        height: 15px;
+    }
+    .button-trash img{
+        width: 17px;
+        height: 17px;
+    }
 }
