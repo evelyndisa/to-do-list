@@ -1,6 +1,7 @@
 'use client'
 import "./page.css";
 import { useState } from 'react';
+import Task from "./components/Task";
 
 export default function Home() {
 
@@ -77,22 +78,14 @@ export default function Home() {
           <p>Complete <span className="span">{tasks.filter(task => task.checked).length}</span> of <span className="span">{tasks.length}</span> </p>
         </div>
         {tasks.map((task, index) => (
-          <div key={index} className={`task-container ${isActive ? 'task-container-darkmode' : ''}`}>
-            <div className="task-box">
-              <input
-                type="checkbox"
-                id={`checkbox-${index}`}
-                name={`checkbox-${index}`}
-                className={`checkbox ${isActive ? 'checkbox-darkmode' : ''}`}
-                checked={task.checked}
-                onChange={() => toggleCheckbox(index)}
-              />
-              <p className={task.checked ? 'line-through' : ''}>{task.text}</p>
-            </div>
-            <button className="button-trash" onClick={() => handleDeleteTask(index)}>
-              {isActive ? <img src="../images/trash-dark.png" alt="trash icon"></img> : <img src="../images/trash.png" alt="trash icon"></img>}
-            </button>
-          </div>
+          <Task
+            key={index}
+            task={task}
+            index={index}
+            isActive={isActive}
+            toggleCheckbox={toggleCheckbox}
+            handleDeleteTask={handleDeleteTask}
+          />
         ))}
       </div>
     </div>
